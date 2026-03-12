@@ -1,9 +1,9 @@
-# Economic and Social Modulations of Innate Decision-Making in Mice Exposed to Visual Threats
+# Rank- and Threat-Dependent Social Modulation of Innate Defensive Behaviors
 
 
 This repository contains code to reproduce the main and supplementary figures from:
 
-**Li, Z. et al. (2025). Economic and Social Modulations of Innate Decision-Making in Mice Exposed to Visual Threats. eLife.**
+**Gao, X. et al. (2026). Rank- and Threat-Dependent Social Modulation of Innate Defensive Behaviors. eLife.**
 
 ## Repository Structure
 
