@@ -7,12 +7,12 @@ This repository contains code to reproduce the main and supplementary figures fr
 
 ## Repository Structure
 
-* `Plot_figures.ipynb`: the main code for generating figures. Running it generates all figures. 
+* `analysis_data.ipynb`: the main code for generating figures. Running it generates all figures. 
 * `analysis_utils.py` and `other_utils`: functions that are used in `Plot_figures.ipynb`
 
 ## How to find the code for a specific figure panel
-* Run the cells in `Plot_figures.ipynb` to generate all figures.
-* Search for "fig.n X" in `Plot_figures.ipynb`, where "n" is 1,2,3..., "X" is A,B,C,...
+* Run the cells in `analysis_data.ipynb` to generate all figures.
+* Search for "FignX" in `analysis_data.ipynb`, where "n" is 1,2,3..., "X" is A,B,C,...
 
 ## License
 This project is under the Apache 2.0 License.
