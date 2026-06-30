@@ -8,7 +8,7 @@ This repository contains code to reproduce the main and supplementary figures fr
 ## Repository Structure
 
 * `analysis_data.ipynb`: the main code for generating figures. Running it generates all figures. 
-* `analysis_utils.py`: functions that are used in `Plot_figures.ipynb`
+* `analysis_utils.py`: functions that are used in `analysis_data.ipynb`
 
 ## How to find the code for a specific figure panel
 * Run the cells in `analysis_data.ipynb` to generate all figures.
