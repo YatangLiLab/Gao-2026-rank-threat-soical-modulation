@@ -9,7 +9,8 @@ This repository contains code to reproduce the main and supplementary figures fr
 
 * `analysis_data.ipynb`: the main code for analyzing data and generating figures. Running it generates all figures.
 * `analysis_data_utils.py`: functions that are used in `analysis_data.ipynb`.
-* `data/`: contains `.csv` files required for plotting.
+* `plot_figures.ipynb`: the code for generating figures from precomputed data (`.pkl` and `.csv` files). Running it generates all figures.
+* `data/`: contains all `.csv` and some `.pkl` files required for plotting.
 * `lst/`: contains the dataset for looming responses, including mouse tracking recordings (`dlc_h5_data`), behavioral annotations (`bento_annot_data` and `deg_csv_data`), and trial-level summary tables (`.csv`).
 * `ret/`: contains the dataset for rat exposure test, including mouse tracking recordings (`ex_xlsx_data`), behavioral annotations (`bento_annot_data` and `deg_csv_data`), and correction tables for analysis (`.csv`).
 * `pkl_data`: `.pkl` files for quickly importing experimental dataset.
