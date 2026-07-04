@@ -13,7 +13,7 @@ This repository contains code to reproduce the main and supplementary figures fr
 * `data/`: contains all `.csv` and some `.pkl` files required for plotting.
 * `lst/`: contains the dataset for looming responses, including mouse tracking recordings (`dlc_h5_data`), behavioral annotations (`bento_annot_data` and `deg_csv_data`), and trial-level summary tables (`.csv`).
 * `ret/`: contains the dataset for rat exposure test, including mouse tracking recordings (`ex_xlsx_data`), behavioral annotations (`bento_annot_data` and `deg_csv_data`), and correction tables for analysis (`.csv`).
-* `pkl_data`: `.pkl` files for quickly importing experimental dataset.
+* `pkl_data`: you need d[`.pkl` files for quickly importing experimental data](https://drive.google.com/file/d/1ww9lFwkD03H-wMi0u8Y5y1aAf-8IegL-/view?usp=sharing).
   
 ## How to find the code for a specific figure panel
 * Run the cells in `analysis_data.ipynb` to generate all figures.
