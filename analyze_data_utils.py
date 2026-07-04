@@ -2594,7 +2594,7 @@ def plot_violin(
     fps=30,
     window_before_stats=1,
     window_after_stats=1,
-    trial_id_format=None, # 'rat' or 'lst' 
+    trial_id_format=None, # 'rat' or 'lst'
     ranks=None, # None=all, 'D', 'S'
     jitter=False,
     n_random_total=1000, # Total number of random time points to generate
@@ -2809,16 +2809,16 @@ def plot_violin(
     positions = list(range(1, n + 1))
     rank_tag = f' ({ranks})' if ranks else ''
 
-    # 1. 单位换算：5.08 cm = 2.0 inches
-    target_inch = 5.08 / 2.54  
+    # 1. Unit conversion: 5.08 cm = 2.0 inches
+    target_inch = 5.08 / 2.54
 
-    # 2. 为坐标轴标签和刻度预留的边距（单位：英寸），可根据实际字体微调
-    left_margin = 0.4    # 左侧预留，给 y 轴标签
-    right_margin = 0.1   # 右侧预留
-    bottom_margin = 0.3  # 底部预留，给 x 轴标签
-    top_margin = 0.1     # 顶部预留
+    # 2. Margins for axis labels and ticks (in inches), can be adjusted based on font
+    left_margin = 0.4    # left margin for y-axis label
+    right_margin = 0.1   # right margin
+    bottom_margin = 0.3  # bottom margin for x-axis labels
+    top_margin = 0.1     # top margin
 
-    # 3. 计算最终画布尺寸
+    # 3. Calculate final figure size
     fig_w = target_inch + left_margin + right_margin
     fig_h = target_inch + bottom_margin + top_margin
 
@@ -2924,13 +2924,13 @@ def plot_location_around_behavior_event(
     if_partner : bool
         True: plot the partner's position; False: plot the subject's position
     window_before : float
-        事件前检查的时间窗口(秒)
+        Time window before the event (seconds)
     window_after : float
-        事件后检查的时间窗口(秒)
+        Time window after the event (seconds)
     fps : int
-        帧率
+        Frame rate
     bin_size_frames : int
-        每个bin的帧数
+        Number of frames in each bin
     
     ret-specific parameters:
     ret_arena_params : dict
@@ -3044,7 +3044,7 @@ def plot_location_around_behavior_event(
         partner_rank_key = 'M' + partner_rank
         
         for t_id, bouts in behavior_data['p'][rank].items():
-            # 过滤无效bouts
+            # Filter invalid bouts
             if bouts is None or (isinstance(bouts, float) and np.isnan(bouts)):
                 continue
             if not isinstance(bouts, list) or len(bouts) == 0:
@@ -3062,7 +3062,7 @@ def plot_location_around_behavior_event(
                 # Time correction
                 corr_rat_in = rat_in_frames[trial_key] - offset_frames[trial_key]
                 
-                # 根据if_partner选择坐标
+                # Determine the coordinate to use based on if_partner
                 if if_partner:
                     # Get the partner's X coordinate
                     x_data = coordinate_data['pair'][partner_rank_key]['withrat'][t_id[:-2]].values
@@ -3085,7 +3085,7 @@ def plot_location_around_behavior_event(
                 
                 looming_start_frame = looming_start_frames[mp_id][trial_num]
                 
-                # 根据if_partner选择坐标
+                # Determine the coordinate to use based on if_partner
                 if if_partner:
                     # Determine the partner's m value
                     if batch_num in ['1', '3', '7', '10', '11', '12', '13', '14', '15', '16', '17', '20']:
@@ -3116,7 +3116,7 @@ def plot_location_around_behavior_event(
                 f_start = int(f_start)
                 f_end = int(f_end)
                 
-                # 确定事件时间点
+                # Determine the event time point
                 if event_type == 'onset':
                     event_frame = f_start
                 elif event_type == 'offset':
@@ -3193,7 +3193,7 @@ def plot_location_around_behavior_event(
         for zone in zone_names:
             zone_pcts[zone] = np.where(total_counts > 0, (zone_counts[zone] / total_counts) * 100, 0)
         
-        # 绘制堆叠柱状图
+        # Draw the stacked bar plot
         width = bin_duration_s
         bottom = np.zeros(n_bins)
         
@@ -3222,28 +3222,28 @@ def plot_location_around_behavior_event(
 
 
 def plot_behavior_distribution_around_event(
-    reference_behavior_data,     # 参考行为数据（如freezing_data）
-    all_behavior_labels_dict,    # 所有行为的标签字典（ret_bhvr_labels_dict或lst_bhvr_labels_dict）
-    data_type='ret',             # 'ret' 或 'lst'
-    reference_behavior='freezing',  # 参考行为名称（用于标题）
-    event_type='onset',          # 'onset' 或 'offset'
-    if_partner=True,             # True: 分析partner的行为; False: 分析自己的行为
-    window_before=10,            # 事件前的时间窗口(秒)
-    window_after=10,             # 事件后的时间窗口(秒)
-    fps=30,                      # 帧率
-    bin_size_frames=1,           # bin大小(帧数)
+    reference_behavior_data,     # Reference behavior data (e.g., freezing_data)
+    all_behavior_labels_dict,    # Dictionary of behavior labels (ret_bhvr_labels_dict or lst_bhvr_labels_dict)
+    data_type='ret',             # 'ret' or 'lst'
+    reference_behavior='freezing',  # Reference behavior name (for title)
+    event_type='onset',          # 'onset' or 'offset'
+    if_partner=True,             # True: analyze partner behavior; False: analyze self behavior
+    window_before=10,            # Time window before event (seconds)
+    window_after=10,             # Time window after event (seconds)
+    fps=30,                      # Frame rate
+    bin_size_frames=1,           # Bin size (frames)
     # ret-specific parameters
-    ret_all_bhvrs=None,          # ret行为列表（顺序）
-    ret_bhvr_abbrev_dict=None,   # ret行为简称字典
-    ret_bhvr_color_dict=None,    # ret行为颜色字典
-    # lst-specific parameters  
-    lst_all_bhvrs=None,          # lst行为列表（顺序）
-    lst_bhvr_abbrev_dict=None,   # lst行为简称字典
-    lst_bhvr_color_dict=None,    # lst行为颜色字典
+    ret_all_bhvrs=None,          # RET behavior list (order)
+    ret_bhvr_abbrev_dict=None,   # RET behavior abbreviation dictionary
+    ret_bhvr_color_dict=None,    # RET behavior color dictionary
+    # lst-specific parameters
+    lst_all_bhvrs=None,          # LST behavior list (order)
+    lst_bhvr_abbrev_dict=None,   # LST behavior abbreviation dictionary
+    lst_bhvr_color_dict=None,    # LST behavior color dictionary
     # plot parameters
-    excluded_behaviors=None,     # 需要排除的行为列表
-    composite_behaviors=None,    # 复合行为定义，如[('withdrawal', 'approach_partner'), ('huddling', 'freezing')]
-    plot_type='stacked_bar',     # 'stacked_bar' 或 'line'
+    excluded_behaviors=None,     # List of behaviors to exclude
+    composite_behaviors=None,    # Composite behavior definitions, e.g., [('withdrawal', 'approach_partner'), ('huddling', 'freezing')]
+    plot_type='stacked_bar',     # 'stacked_bar' or 'line'
     figsize=(14, 6),
     ylabel='Behavior occurrence (%)',
     xlabel=None,
